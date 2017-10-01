@@ -90,6 +90,7 @@ form > textarea {
     display: inline-block;
     width: 50%;
     text-align: center;
+    color: cornsilk
 }
 
 .nav-menu a:visited, a:link {

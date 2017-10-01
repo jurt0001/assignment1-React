@@ -5,7 +5,7 @@ Description: This is React Application displays a list on the Main page.
 it also allows you to add a new item to the list.
 
 Version: 0.0.1
-Updated: October 1, 2017
+Updated: Oct 1, 2017
 
 *****************************************************************/
 
@@ -49,7 +49,7 @@ let ListItem = React.createClass({
     propTypes: {
         id: React.PropTypes.number, //setting the id # as a property
         name: React.PropTypes.string.isRequired, //setting the name of the accomplishment as property
-        price: React.PropTypes.string.isRequired, //setting the year as a property
+        year: React.PropTypes.string.isRequired, //setting the year as a property
         description: React.PropTypes.string // setting the description as a property
     },
 
@@ -59,7 +59,7 @@ let ListItem = React.createClass({
             React.createElement("li", {},
                 React.createElement("a", {className: "menu-item-link", href: "#/item/" + this.props.id}, //setting custom href
                     React.createElement("h2", {className: "list-item-name"}, this.props.name), //passing the item name in the h2 element
-                    React.createElement("div", {className: "year"}, this.props.price)//passing the year property into a div
+                    React.createElement("div", {className: "year"}, this.props.year)//passing the year property into a div
                    
                 )
             )
@@ -99,7 +99,7 @@ let ListPage = React.createClass({
 let ItemPage = React.createClass({
     propTypes: {
         name: React.PropTypes.string.isRequired, //name will be required
-        price: React.PropTypes.string.isRequired, //year is required
+        year: React.PropTypes.string.isRequired, //year is required
         description: React.PropTypes.string //description is optional
     },
 
@@ -107,7 +107,7 @@ let ItemPage = React.createClass({
         return ( //creating item page view
             React.createElement("div", {className: "list-menu"},
                 React.createElement("h2", {className: "list-name-header"}, this.props.name),
-                React.createElement("p", {}, this.props.price),
+                React.createElement("p", {}, this.props.year),
                 React.createElement("p", {className: "list-name-header"}, this.props.description)
                 
             )
@@ -126,8 +126,8 @@ let AddEntryForm = React.createClass({
     onNameChange: function(e) {
         this.props.onChange(Object.assign({}, this.props.listItem, {name: e.target.value})); 
     },
-    onPriceChange: function(e) {
-        this.props.onChange(Object.assign({}, this.props.listItem, {price: e.target.value}));
+    onYearChange: function(e) {
+        this.props.onChange(Object.assign({}, this.props.listItem, {year: e.target.value}));
     },
     onDescriptionChange: function(e) {
         this.props.onChange(Object.assign({}, this.props.listItem, {description: e.target.value}));
@@ -147,8 +147,8 @@ let AddEntryForm = React.createClass({
                 React.createElement("input", {
                     type: "text",
                     placeholder: "Year",
-                    value: this.props.listItem.price,
-                    onChange: this.onPriceChange
+                    value: this.props.listItem.year,
+                    onChange: this.onYearChange
                 }),
                 React.createElement("textarea", {
                     placeholder: "Description",
@@ -228,7 +228,7 @@ let setState = function(changes) {
                     let itemList = state.items; //getting the existing list of items
                     const newKey = itemList.length + 1; //determining the key of the new item
                     itemList.push(Object.assign({}, {key: newKey, id: newKey}, item)); //adding the new item into the items array.
-                    setState({items: itemList, listItem: {name: "", description: "", price: ""}});
+                    setState({items: itemList, listItem: {name: "", description: "", year: ""}});
                 }
             };
             break;
@@ -261,4 +261,4 @@ let setState = function(changes) {
 window.addEventListener('hashchange', ()=>setState({location: location.hash}));
 
 //Start the app by declaring the initial state
-setState({listItem: {name: "", description: "", price: ""}, location: location.hash, items: items});
+setState({listItem: {name: "", description: "", year: ""}, location: location.hash, items: items});
