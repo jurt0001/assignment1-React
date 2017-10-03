@@ -9,7 +9,7 @@ Updated: Oct 1, 2017
 
 *****************************************************************/
 
-//creating a header and populating it with a heading and logo
+//creating a header and populating it with a heading and logo for list page
 let Header = React.createClass({
     propTypes: {
     },
@@ -24,6 +24,41 @@ let Header = React.createClass({
         )
     }
 }); 
+        
+//creating a header and populating it with a heading and logo for items page
+        
+let Header2 = React.createClass({
+    propTypes: {
+        
+    },
+    render: function() {
+        return(
+            React.createElement("div", {className: "header"}, //setting header className
+                React.createElement("p", {}, "Accomplishment Details", //hardcoding Page Title
+                    React.createElement("p", {},
+                        React.createElement("img", {src: "http://jurt0001.edumedia.ca/mobileDev/launcher_white.png", width: "200px"}), //creating logo and setting size
+                )
+            )
+        )
+    )}
+});
+        
+//creating a header and populating it with a heading and logo for add page   
+        
+let Header3 = React.createClass({
+    propTypes: {
+    },
+    render: function() {
+        return(
+            React.createElement("div", {className: "header"}, //setting header className
+                React.createElement("p", {}, "Add an Accomplishments"), //hardcoding Page Title
+                    React.createElement("p", {},
+                        React.createElement("img", {src: "images/launcher_blue.png", width: "200px"}), //creating logo and setting size
+                )
+            )
+        )
+    }
+});
 
 //Creating a Navigation Menu
 
@@ -105,7 +140,7 @@ let ListPage = React.createClass({
                         React.createElement(NavMenu, {}), 
                             React.createElement(ListItems, {items: this.props.items}) //populating the list page with the list
         )
-    }
+    )}
 }); 
 
 //creating pages to showcase the details of the individual list items.
@@ -121,7 +156,7 @@ let ItemPage = React.createClass({
     render: function() {
         return ( //creating item page view
                React.createElement("div", {},   
-                    React.createElement(Header, {}), 
+                    React.createElement(Header2, {}), 
                         React.createElement(NavMenu, {}), 
                             React.createElement("div", {className: "list-menu"},
                                 React.createElement("h2", {className: "list-name-header"}, this.props.name),
@@ -197,7 +232,7 @@ let AddNewPage = React.createClass({
     render: function() {
         return (
             React.createElement("div", {},   
-                React.createElement(Header, {}), 
+                React.createElement(Header3, {}), 
                     React.createElement(NavMenu, {}),    
                         React.createElement("div", {},
                             React.createElement(AddEntryForm, {listItem: this.props.listItem, onChange: this.props.onNewListItemChange, onSubmit: this.props.onSubmitNewItem})
