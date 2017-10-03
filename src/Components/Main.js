@@ -100,7 +100,10 @@ let ListPage = React.createClass({
 
     render: function() {
         return ( 
-                React.createElement(ListItems, {items: this.props.items}) //populating the list page with the list
+                React.createElement("div", {},   
+                    React.createElement(Header, {}), 
+                        React.createElement(NavMenu, {}), 
+                            React.createElement(ListItems, {items: this.props.items}) //populating the list page with the list
         )
     }
 }); 
@@ -117,15 +120,18 @@ let ItemPage = React.createClass({
 
     render: function() {
         return ( //creating item page view
-            React.createElement("div", {className: "list-menu"},
-                React.createElement("h2", {className: "list-name-header"}, this.props.name),
-                    React.createElement("p", {}, this.props.year),
-                        React.createElement("p", {className: "list-name-header"}, this.props.description),
-                            React.createElement("img", {src: this.props.image, width: "400px"})        
-                
+               React.createElement("div", {},   
+                    React.createElement(Header, {}), 
+                        React.createElement(NavMenu, {}), 
+                            React.createElement("div", {className: "list-menu"},
+                                React.createElement("h2", {className: "list-name-header"}, this.props.name),
+                                    React.createElement("p", {}, this.props.year),
+                                        React.createElement("p", {className: "list-name-header"}, this.props.description),
+                                            React.createElement("img", {src: this.props.image, width: "400px"})        
+
             )
         )
-    }
+    )}
 }); 
 
 //Creating and entry form page so the user can add a new item to the list.
@@ -190,11 +196,14 @@ let AddNewPage = React.createClass({
 
     render: function() {
         return (
-            React.createElement("div", {},
-                React.createElement(AddEntryForm, {listItem: this.props.listItem, onChange: this.props.onNewListItemChange, onSubmit: this.props.onSubmitNewItem})
+            React.createElement("div", {},   
+                React.createElement(Header, {}), 
+                    React.createElement(NavMenu, {}),    
+                        React.createElement("div", {},
+                            React.createElement(AddEntryForm, {listItem: this.props.listItem, onChange: this.props.onNewListItemChange, onSubmit: this.props.onSubmitNewItem})
             )
         )
-    }
+    )}
 }); 
 
 
@@ -251,20 +260,20 @@ let setState = function(changes) {
     
     
     //the rootElement where I will put everything I want to render on the DOM
-    let rootElement = React.createElement("div", {},
-        React.createElement(Header, {}), //header
-        React.createElement(NavMenu, {}), //navigation
+    let master = React.createElement("div", {className: "content-area"},
+        //React.createElement(Header, {}), //header
+        //React.createElement(NavMenu, {}), //navigation
         React.createElement(component, componentProperties), //this is what will change based on the component properties
         React.createElement(Footer, {})
     );
 
     
     //render everthing i've built to the DOM
-    ReactDOM.render(rootElement, document.getElementById("react-app"));
+    ReactDOM.render(master, document.getElementById("react-app"));
 };
 
 //adding an event listen to the window so that when the has changes so does the content
 window.addEventListener('hashchange', ()=>setState({location: location.hash}));
 
 //Start the app by declaring the initial state
-setState({listItem: {name: "", description: "", year: ""}, location: location.hash, items: items});
+setState({listItem: {name: "", description: "", year: "", image: ""}, location: location.hash, items: items});
