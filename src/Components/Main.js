@@ -50,7 +50,8 @@ let ListItem = React.createClass({
         id: React.PropTypes.number, //setting the id # as a property
         name: React.PropTypes.string.isRequired, //setting the name of the accomplishment as property
         year: React.PropTypes.string.isRequired, //setting the year as a property
-        description: React.PropTypes.string // setting the description as a property
+        description: React.PropTypes.string, // setting the description as a property
+        image: React.PropTypes.src
     },
 
     //creating a render function to actually create the html element of the list item.
@@ -59,7 +60,10 @@ let ListItem = React.createClass({
             React.createElement("li", {},
                 React.createElement("a", {className: "menu-item-link", href: "#/item/" + this.props.id}, //setting custom href
                     React.createElement("h2", {className: "list-item-name"}, this.props.name), //passing the item name in the h2 element
-                    React.createElement("div", {className: "year"}, this.props.year)//passing the year property into a div
+                        React.createElement("div", {className: "year"}, this.props.year)//passing the year property into a div
+                            
+                            
+                                    
                    
                 )
             )
@@ -96,7 +100,7 @@ let ListPage = React.createClass({
 
     render: function() {
         return ( 
-            React.createElement(ListItems, {items: this.props.items}) //populating the list page with the list
+                React.createElement(ListItems, {items: this.props.items}) //populating the list page with the list
         )
     }
 }); 
@@ -107,15 +111,17 @@ let ItemPage = React.createClass({
     propTypes: {
         name: React.PropTypes.string.isRequired, //name will be required
         year: React.PropTypes.string.isRequired, //year is required
-        description: React.PropTypes.string //description is optional
+        description: React.PropTypes.string, //description is optional
+        image: React.PropTypes.src
     },
 
     render: function() {
         return ( //creating item page view
             React.createElement("div", {className: "list-menu"},
                 React.createElement("h2", {className: "list-name-header"}, this.props.name),
-                React.createElement("p", {}, this.props.year),
-                React.createElement("p", {className: "list-name-header"}, this.props.description)
+                    React.createElement("p", {}, this.props.year),
+                        React.createElement("p", {className: "list-name-header"}, this.props.description),
+                            React.createElement("img", {src: this.props.image, width: "400px"})        
                 
             )
         )
@@ -246,10 +252,10 @@ let setState = function(changes) {
     
     //the rootElement where I will put everything I want to render on the DOM
     let rootElement = React.createElement("div", {},
-        //React.createElement(Header, {}), //header
-        React.createElement(NavMenu, {}),
+        React.createElement(Header, {}), //header
+        React.createElement(NavMenu, {}), //navigation
         React.createElement(component, componentProperties), //this is what will change based on the component properties
-        React.createElement(Footer, {items: footerText})
+        React.createElement(Footer, {})
     );
 
     
