@@ -1,3 +1,4 @@
+/******File: main.css******/
 
 ul {
     list-style: none;
@@ -15,6 +16,7 @@ ul {
     border: solid lightblue 1px;
     margin-left: -40px;
     margin-bottom: 10px;
+    background-color: lightblue;
    
 }
 
@@ -30,7 +32,7 @@ h2 {
 
 .footer {
     font-size: 1.em;
-    color: dodgerblue;
+    color: lightblue;
 }
 
 .header {
@@ -77,12 +79,13 @@ form > textarea {
 
 .nav-menu {
     border-radius: 10px;
+    border: dashed black 4px;
     width: 60%;
     margin: 0 auto;
     list-style-type: none;
     font-size: 1.2em;
     font-family: Arial,sans-serif;
-    background-color: darkblue;
+    background-color: lightblue;
     color: cornsilk;
     font-weight: bold;
     padding-top: 25px;
@@ -96,14 +99,12 @@ form > textarea {
     color: cornsilk
 }
 
-.nav-menu a:visited, a:link {
-    color: cornsilk;
-}
-
-.menu-item-link a, a:visited, a:link {
+.menu-item-link a, a:visited, a:link{
     color: black;
     text-decoration: none;
 }
+
+
 
 .menu-item-link a:hover {
     text-decoration: underline;

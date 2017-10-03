@@ -1,6 +1,7 @@
 /*****************************************************************
 File: Main.js
 Author: Christian Josef Jurt
+
 Description: This is React Application displays a list on the Main page.
 it also allows you to add a new item to the list.
 
@@ -95,11 +96,7 @@ let ListItem = React.createClass({
             React.createElement("li", {},
                 React.createElement("a", {className: "menu-item-link", href: "#/item/" + this.props.id}, //setting custom href
                     React.createElement("h2", {className: "list-item-name"}, this.props.name), //passing the item name in the h2 element
-                        React.createElement("div", {className: "year"}, this.props.year)//passing the year property into a div
-                            
-                            
-                                    
-                   
+                        React.createElement("div", {className: "year"}, this.props.year)//passing the year property into a div 
                 )
             )
         )
@@ -241,8 +238,6 @@ let AddNewPage = React.createClass({
     )}
 }); 
 
-
-
 //creating a footer
 let Footer = React.createClass({
     propTypes: {
@@ -261,7 +256,7 @@ let Footer = React.createClass({
 let state = {};
 let setState = function(changes) {
     let component;
-    let componentProperties = {};
+    let Properties = {};
 
     Object.assign(state, changes);
 
@@ -270,7 +265,7 @@ let setState = function(changes) {
     switch(splittedUrl[0]) {
         case "newitem":
             component = AddNewPage; //bring you to add new entry form
-            componentProperties = {
+                    Properties = {
                 listItem: state.listItem,
                 onNewListItemChange: function(item) {
                     setState({listItem: item});
@@ -286,20 +281,18 @@ let setState = function(changes) {
         case "item":
             component = ItemPage;
             //determining what to display on items page based on the hash and compared to the item key
-            componentProperties = state.items.find(i => i.key == splittedUrl[1]);  
+            Properties = state.items.find(i => i.key == splittedUrl[1]);  
             break;
         default: //pages always goes to the list when it doesn't meet any of the other switch statements
             component = ListPage;
-            componentProperties = {items: state.items};
+            Properties = {items: state.items};
     }
     
     
     //the rootElement where I will put everything I want to render on the DOM
     let master = React.createElement("div", {className: "content-area"},
-        //React.createElement(Header, {}), //header
-        //React.createElement(NavMenu, {}), //navigation
-        React.createElement(component, componentProperties), //this is what will change based on the component properties
-        React.createElement(Footer, {})
+        React.createElement(component, Properties), //this is what will change based on the component properties
+            React.createElement(Footer, {})
     );
 
     

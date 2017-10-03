@@ -1,3 +1,15 @@
+/*****************************************************************
+File: Main.js
+Author: Christian Josef Jurt
+
+Description: This is React Application displays a list on the Main page.
+it also allows you to add a new item to the list.
+
+Version: 0.0.1
+Updated: Oct 1, 2017
+
+*****************************************************************/
+
 
 let items = [
     {key: 1, id: 1, name: "Camino de Santiago", year: "2017", description: "At the tail end of 2016, my 3 siblings and I decided to walk to Camino de Santiago in Spain. This is not anything I ever thought to do but all my siblings at one time or another had brought it up. They each are convinced that they were the ones to first come up with the idea. This was the first time we actually put our intention into making the trip. April 22, 2017 came around and we were all on a flight to Porto and then 2 France where our journey would begin. We walked from St. Jean Pied du Port, France and across the border to Spain until we hit Burgos, Spain. From here he buses ahead to Sarria and again walked to Santiago de Compestella from there. We only skipped ahead due to time constraints. We walked over 350km in 17 days. The whole hike normally would take approximately 40 days and 800km. My feet still hurt to this day.", image: "images/camino.jpg"},
