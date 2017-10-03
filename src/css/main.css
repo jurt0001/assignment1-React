@@ -29,13 +29,11 @@ h2 {
 }
 
 .footer {
-    font-size: 0.5em;
-    color: lightgray;
-    /*border: solid pink 2px;*/
+    font-size: 1.em;
+    color: dodgerblue;
 }
 
 .header {
-    /*border: solid purple 2px;*/
     font-size: 1.4em;
     font-family: Arial, sans-serif;
     text-align: center;
@@ -49,9 +47,14 @@ h2 {
 }
 
 .footer {
-    margin-top: 100px;
-    margin: 0 auto;
+    margin: 0 auto;  
     text-align: center
+}
+
+.wFooter{
+    margin-top: 200px; 
+    
+    
 }
 
 form {
