@@ -8,11 +8,13 @@ ul {
     width: 60%;
     margin: 0 auto;
     margin-top: 10px;
+    background-color: white;
+    padding-top: -30px;
 }
 
 
 .list-menu li {
-     border-radius: 10px;
+    border-radius: 10px;
     border: solid lightblue 1px;
     margin-left: -40px;
     margin-bottom: 10px;
@@ -30,11 +32,6 @@ h2 {
     display: inline-block;
 }
 
-.footer {
-    font-size: 1.em;
-    color: lightblue;
-}
-
 .header {
     font-size: 1.4em;
     font-family: Arial, sans-serif;
@@ -50,13 +47,10 @@ h2 {
 
 .footer {
     margin: 0 auto;  
-    text-align: center
-}
-
-.wFooter{
-    margin-top: 200px; 
-    
-    
+    text-align: center;
+    margin-top: 200px;
+    font-size: 1.em;
+    color: lightblue;
 }
 
 form {
@@ -71,20 +65,19 @@ form > textarea {
     padding: 4px 8px;
     margin-bottom: 8px;
     border-radius: 3px;
-    border: 1px solid #888;
-    font-size: 14px;
-    background: none;
-    box-shadow:none;
+    border: 2px solid black;
+    font-size: 1.0em;
+    
 }
 
 .nav-menu {
     border-radius: 10px;
-    border: dashed black 4px;
+    border: dashed black 2px;
     width: 60%;
     margin: 0 auto;
     list-style-type: none;
-    font-size: 1.2em;
-    font-family: Arial,sans-serif;
+    font-size: 1.3em;
+    font-family: Helvetica, sans-serif;
     background-color: lightblue;
     color: cornsilk;
     font-weight: bold;
@@ -94,7 +87,7 @@ form > textarea {
 
 .nav-menu li {
     display: inline-block;
-    width: 50%;
+    width: 48%;
     text-align: center;
     color: cornsilk
 }
@@ -104,8 +97,3 @@ form > textarea {
     text-decoration: none;
 }
 
-
-
-.menu-item-link a:hover {
-    text-decoration: underline;
-} 

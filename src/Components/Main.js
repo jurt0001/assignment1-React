@@ -19,7 +19,7 @@ let Header = React.createClass({
             React.createElement("div", {className: "header"}, //setting header className
                 React.createElement("p", {}, "List of Accomplishments"), //hardcoding Page Title
                     React.createElement("p", {},
-                        React.createElement("img", {src: "http://jurt0001.edumedia.ca/mobileDev/launcher_white.png", width: "200px"}), //creating logo and setting size
+                        React.createElement("img", {src: "images/launcher_white_copy.png", width: "200px"}), //creating logo and setting size
                 )
             )
         )
@@ -37,7 +37,7 @@ let Header2 = React.createClass({
             React.createElement("div", {className: "header"}, //setting header className
                 React.createElement("p", {}, "Accomplishment Details", //hardcoding Page Title
                     React.createElement("p", {},
-                        React.createElement("img", {src: "http://jurt0001.edumedia.ca/mobileDev/launcher_white.png", width: "200px"}), //creating logo and setting size
+                        React.createElement("img", {src: "images/launcher_white_copy.png", width: "200px"}), //creating logo and setting size
                 )
             )
         )
@@ -87,7 +87,7 @@ let ListItem = React.createClass({
         name: React.PropTypes.string.isRequired, //setting the name of the accomplishment as property
         year: React.PropTypes.string.isRequired, //setting the year as a property
         description: React.PropTypes.string, // setting the description as a property
-        image: React.PropTypes.src
+        image: React.PropTypes.src //setting the image. not required
     },
 
     //creating a render function to actually create the html element of the list item.
@@ -159,7 +159,7 @@ let ItemPage = React.createClass({
                                 React.createElement("h2", {className: "list-name-header"}, this.props.name),
                                     React.createElement("p", {}, this.props.year),
                                         React.createElement("p", {className: "list-name-header"}, this.props.description),
-                                            React.createElement("img", {src: this.props.image, width: "400px"})        
+                                            React.createElement("img", {src: this.props.image, width: "400px"})
 
             )
         )
@@ -219,7 +219,7 @@ let AddEntryForm = React.createClass({
 });
 
 //Creating the page where the add entry form will live
-let AddNewPage = React.createClass({
+let FormView = React.createClass({
     propTypes: {
         listItem: React.PropTypes.object.isRequired,
         onNewListItemChange: React.PropTypes.func.isRequired,
@@ -260,12 +260,12 @@ let setState = function(changes) {
 
     Object.assign(state, changes);
 
-    let splittedUrl = state.location.replace(/^#\/?|\/$/g, "").split("/"); //spliting the URL
+    let splittedUrl = state.location.replace(/^#\/?|\/$/g, "").split("/"); //spliting the URL into two
 
-    switch(splittedUrl[0]) {
+    switch(splittedUrl[0]) { //starting point for switch statement is first half of the url
         case "newitem":
-            component = AddNewPage; //bring you to add new entry form
-                    Properties = {
+            component = FormView; //bring you to add new entry form
+                    Properties = { 
                 listItem: state.listItem,
                 onNewListItemChange: function(item) {
                     setState({listItem: item});
@@ -290,18 +290,24 @@ let setState = function(changes) {
     
     
     //the rootElement where I will put everything I want to render on the DOM
-    let master = React.createElement("div", {className: "content-area"},
+    let masterElement = React.createElement("div", {className: "content-area"},
         React.createElement(component, Properties), //this is what will change based on the component properties
             React.createElement(Footer, {})
     );
 
     
-    //render everthing i've built to the DOM
-    ReactDOM.render(master, document.getElementById("react-app"));
+    //Rendering everthing i've built to the DOM
+    ReactDOM.render(masterElement, document.getElementById("react-app"));
 };
 
 //adding an event listen to the window so that when the has changes so does the content
 window.addEventListener('hashchange', ()=>setState({location: location.hash}));
 
 //Start the app by declaring the initial state
-setState({listItem: {name: "", description: "", year: "", image: ""}, location: location.hash, items: items});
+setState({listItem: {
+                name: "", 
+         description: "", 
+                year: "", 
+               image: ""
+        },  location: location.hash, 
+               items: items});
