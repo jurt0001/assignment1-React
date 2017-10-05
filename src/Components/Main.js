@@ -312,4 +312,4 @@ setState({listItem: {
 	year: '', 
 	image: ''
 },  location: location.hash, 
-    items: items});
+items: items});
